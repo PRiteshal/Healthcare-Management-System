@@ -2,13 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-
 dotenv.config();
 
 const app = express();
 
-// Middleware
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+// ✅ CORS fix
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://healthcare-management-system-taupe-five.vercel.app",
+  ],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // Routes
